@@ -104,7 +104,8 @@ def clearBingChat(driver):
 #Inputs phrase into Bing Chat
 def inputBingChat(driver, phrase, handle, prompt):
     msg = prompt + phrase
-    pyperclip.copy(msg) #pyautogui doesn't work with japanese so a workaround is to use pyperclip and paste into text box
+    #pyautogui doesn't work with japanese so a workaround is to use pyperclip and paste into text box. 
+    pyperclip.copy((str(msg)).replace("\n", " "))
     driver.switch_to.window(handle)
     bing_icon_location = pyautogui.locateOnScreen(resource_path("images/bingChat.PNG"))
     pyautogui.click(bing_icon_location, button='left')
